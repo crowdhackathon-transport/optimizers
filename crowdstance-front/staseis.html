@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>API CAll</title>
+</head>
+<body>
+
+  ΣΤΑΣΕΙΣ
+
+  <div class="content">
+
+  </div>
+
+
+  <div class="name">
+
+  </div>
+
+  <div class="stance">
+
+  </div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+  <script>
+  var urlNames = "http://172.16.177.201:5000/api/v1.0/route/names";
+  var urlId = "http://172.16.177.201:5000/api/v1.0/route/";
+
+  $.getJSON(urlNames, function(data){
+    var stances = data;
+    var stancesCount = stances.length;
+
+    var stanceNames = [];
+    var stanceIds = [];
+
+    for(var i = 0; i < stancesCount; i++) {
+      var stanceName = stances[i]["route_long_name"];
+      var stanceId = stances[i]["route_short_name"];
+      // console.log(stances[i]);
+      stanceNames.push(stanceName);
+      stanceIds.push(stanceId);
+    }
+
+
+    console.log(stanceNames, stanceIds);
+
+  });
+
+</script>
+</body>
+</html>
